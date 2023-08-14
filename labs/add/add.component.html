@@ -1,0 +1,180 @@
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <app-page-title title="Create Lab" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4 text-green font-size-18">Lab Details</h4>
+
+                    <form>
+
+                        
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="mb-4">
+                                    <label for="short-bio">Upload Lab Photo</label>
+                                    <input type="file" class="form-control">
+                                </div>
+                            </div>                            
+                        </div>
+
+                        
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-4">
+                                    <label for="firstname">Lab Name</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-4">
+                                    <label for="firstname-arabic">Lab Name in Arabic</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-4">
+                                    <label for="lastname">Address Line 1</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-4">
+                                    <label for="lastname-arabic">Address Line 2</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="mb-4">
+                                    <label for="lastname">City</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-4">
+                                    <label for="lastname-arabic">State</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-4">
+                                    <label for="lastname-arabic">Zip Code</label>
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-4">
+                                    <label for="lastname">Phone Number</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-4">
+                                    <label for="lastname-arabic">Email</label>
+                                    <input type="email" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body pb-0">
+                    <h4 class="card-title mb-4 text-green font-size-18">Communication Details</h4>
+
+                    <form>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-4">
+                                    <label for="person">Contact Person</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>     
+                            <div class="col-md-6">
+                                <div class="mb-4">
+                                    <label for="email">Email ID</label>
+                                    <input type="email" class="form-control">
+                                </div>
+                            </div>                            
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="mb-4">
+                                    <label>Code</label>
+                                    <ng-select [items]="selectCode"></ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="mb-4">                                    
+                                    <label for="mobile">Mobile Number</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        
+
+                        
+                        
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="mb-4">
+                                    <label for="short-bio">Comments</label>
+                                    <textarea class="form-control" style="height:150px;"></textarea>
+                                </div>
+                            </div>                            
+                        </div>
+
+                        
+
+                        <div class="row">
+                            <div class="col-md-6">                                
+                                <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" id="activeUser" checked>
+                                    <label class="form-check-label" for="activeUser">
+                                        Active
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        
+                    </form>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>    
+    <!-- end row -->
+    <div class="row d-flex mb-4">
+        <div class="col-sm-12">
+            <div class="justify-content-center text-center">
+                <button type="submit" class="btn btn-primary w-md">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
