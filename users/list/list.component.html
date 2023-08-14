@@ -1,0 +1,183 @@
+<div class="container-fluid">
+  <div class="row mt-4 mb-3">
+    <div class="col-lg-6 pt-2">
+      <h3>Users List</h3>
+    </div>
+    <div class="col-lg-6 text-end">
+      <a (click)="extraLarge(newUsers)" class="btn btn-primary"><i class="fa fa-plus-circle"></i> New User</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body scrolltable">
+          <table id="example" class="table table-bordered dt-responsive nowrap datatables no-footer dtr-inline display" cellspacing="0" width="100%">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>User Role</th>
+                <th>User Code</th>
+                <th>Block</th>
+                <th>District</th>
+                <th>Account No</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let table of userList; let i = index">
+                <td>{{ table.name }}</td>
+                <td>{{ table.mobileNo }}</td>
+                <td>{{ table.role }}</td>
+                <td>{{ table.userCode }}</td>
+                <td>{{ table.blockName }}</td>
+                <td>{{ table.districtName }}</td>
+                <td>{{ table.accountNo }}</td>
+                <td>
+                  <a style="margin-right: 10px; background: #d9f1fe; padding: 5px 7px; border-radius: 40px" (click)="userClicked(table)"
+                    ><i class="far fa-edit"></i
+                  ></a>
+                  <a class="tbl-btn" (click)="deleteUser(table.userId)"><i class="far fa-trash-alt"></i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #newUsers let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title mt-0">{{ modalHeaderText }}</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Close click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="newUsersForm" id="newUsersForm" (ngSubmit)="postuser()">
+      <div class="row">  
+        <div class="col-md-8">
+          <div class="mb-4">
+            <label for="firstname">Name<span class="text-danger font-size-14">*</span></label>
+            <input type="text" class="form-control" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+              <div *ngIf="f.name.errors.required">Name is required</div>
+            </div>
+          </div>
+        </div>          
+        <div class="col-md-4">
+          <div class="mb-4">
+            <label for="cost">Phone<span class="text-danger font-size-14">*</span></label>
+            <input type="text" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="10" formControlName="phoneNumber" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" />
+            <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+              <div *ngIf="f.phoneNumber.errors.required">Mobile Number is required</div>
+            </div>
+          </div>
+        </div>       
+      </div>      
+      <div class="row">  
+        <div class="col-md-4">
+          <div class="mb-4">
+            <label for="cost">Email</label>
+            <input type="text" class="form-control" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">Email ID is required</div>
+              <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+            </div>
+          </div>
+        </div>        
+        <div class="col-md-4">
+          <div class="mb-2">
+            <label for="cost">Role</label>
+            <ng-select [items]="selectRole" 
+            bindLabel="roleName" 
+            bindValue="roleId" 
+            formControlName="roleId" 
+            [ngClass]="{ 'is-invalid': submitted && f.roleId.errors }" ></ng-select>
+          <div *ngIf="submitted && f.roleId.errors" class="invalid-feedback">
+            <div *ngIf="f.roleId.errors.required">Role is required</div>
+          </div>
+          </div>
+        </div>  
+        <div class="col-md-4">
+          <div class="mb-4">
+            <label>User Code<span class="text-danger font-size-14">*</span></label>
+            <input type="text" class="form-control" formControlName="userCode" [ngClass]="{ 'is-invalid': submitted && f.userCode.errors }" />
+            <div *ngIf="submitted && f.userCode.errors" class="invalid-feedback">
+              <div *ngIf="f.userCode.errors.required">User Code is required</div>
+            </div>
+          </div>
+        </div>    
+      </div>
+      <div class="row">  
+        <div class="col-md-4">
+          <div class="mb-4">
+            <label>User Name<span class="text-danger font-size-14">*</span></label>
+            <input type="text" class="form-control" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+              <div *ngIf="f.username.errors.required">User Name is required</div>
+            </div>
+          </div>
+        </div>          
+        <div class="col-md-4" *ngIf="!isEditEnabled">
+          <div class="mb-4">
+            <label>Password<span class="text-danger font-size-14">*</span></label>
+            <input type="password" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Password is required</div>
+            </div>
+          </div>
+        </div>          
+        <div class="col-md-4" *ngIf="!isEditEnabled">
+          <div class="mb-4">
+            <label>Confirm Password<span class="text-danger font-size-14">*</span></label>
+            <input type="password" class="form-control" formControlName="cpassword" [ngClass]="{ 'is-invalid': submitted && f.cpassword.errors }" />
+            <div *ngIf="submitted && f.cpassword.errors" class="invalid-feedback">
+              <div *ngIf="f.cpassword.errors.required">Confirm Password is required</div>
+            </div>
+            <div *ngIf="(f.cpassword.dirty || f.cpassword.touched)" class="invalid-feedback" style="display: block !important;">
+              <div *ngIf="f.cpassword.errors?.['confirmedValidator']">
+                Passwords did not match
+              </div>
+            </div>
+          </div>
+        </div>   
+        <div class="col-md-4">
+          <div class="mb-4">
+            <label for="cost">District<span class="text-danger font-size-14">*</span></label>
+            <ng-select [items]="selectDistrict" 
+              bindLabel="districtName" 
+              bindValue="districtId" 
+              (change)="districtChanged($event)"
+              formControlName="districtId" 
+              [ngClass]="{ 'is-invalid': submitted && f.districtId.errors }" ></ng-select>
+            <div *ngIf="submitted && f.districtId.errors" class="invalid-feedback">
+              <div *ngIf="f.districtId.errors.required">District is required</div>
+            </div>
+          </div>
+        </div>       
+        <div class="col-md-4">
+          <div class="mb-4">
+            <label for="cost">Block<span class="text-danger font-size-14">*</span></label>
+            <ng-select [items]="selectBlock" bindLabel="blockName" bindValue="blockId"
+            formControlName="blockId" 
+            [ngClass]="{ 'is-invalid': submitted && f.blockId.errors }" 
+            ></ng-select>
+            <div *ngIf="submitted && f.blockId.errors" class="invalid-feedback">
+              <div *ngIf="f.blockId.errors.required">Block is required</div>
+            </div>
+          </div>
+        </div>     
+      </div>    
+      <div class="row d-flex">
+        <div class="col-sm-12">
+          <div class="justify-content-center text-center">
+            <button type="submit" class="btn btn-primary w-md me-2">Submit</button>
+            <button type="submit" class="btn btn-info w-md" aria-label="Close" (click)="modal.dismiss('Close click')">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

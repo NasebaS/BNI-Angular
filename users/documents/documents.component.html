@@ -1,0 +1,447 @@
+<div class="container-fluid">
+  <div class="row ">
+    
+    <div class="col-lg-6">
+      <h4 class="mb-3 font-size-18">LEAD ID - <span class="text-danger">L001</span></h4>
+    </div>
+    <!-- <div class="col-lg-6 text-end">
+      <a class="font-size-15 text-black"><i class="fas fa-print"></i> Print</a>
+    </div> -->
+  
+  </div>
+  
+  <div class="row">
+    <div class="col-8">
+      <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body pb-1">
+         
+          <div class="row ">
+            
+
+            <div class="col-lg-12">
+              <div class="row">
+                <div class="col-lg-6">
+                  <h4 class="text-green mb-4">Lead Info</h4>
+                </div>
+                <div class="col-lg-6 text-end">
+                  <a *ngIf="!isEditClicked" onclick=""  (click)="editlead()" class="btn btn-primary mr-10" ><i class="fa fa-edit"></i> Edit</a>
+                  <a *ngIf="isEditClicked" class="btn btn-success mr-10"  (click)="savelead()" ><i class="fa fa-save"></i> Save</a>
+                  <!-- <a class="btn btn-secondary"><i class="fa fa-plus-circle"></i> Add Notes</a> -->
+                </div>
+                <div class="col-lg-7 invoice-table">                  
+                  <table class="table">
+                    <tbody>                     
+                      <tr>
+                        <td>Lead Name</td>
+                        <td class=""><strong *ngIf="!isEditClicked" >Rose</strong>
+                        <input *ngIf="isEditClicked" type="text" value="Rose"/></td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td><span *ngIf="!isEditClicked" >test@gmail.com</span>
+                          <input *ngIf="isEditClicked" type="text" value="test@gmail.com"/></td>
+                      </tr>
+                      <tr>
+                        <td>District</td>
+                        <td><span *ngIf="!isEditClicked" >District 11</span>
+                          <input *ngIf="isEditClicked" type="text" value="District 11"/></td>
+                      </tr>
+                      <tr>
+                        <td>Status</td>
+                        <td><span  *ngIf="!isEditClicked" class="badge bg-warning pt-1 font-size-13">Pending</span>
+                        <select  *ngIf="isEditClicked">
+                          <option selected="selected">Pending</option>
+                          <option >Completed</option>
+                        </select></td>
+                      </tr>                     
+                    </tbody>
+                  </table>   
+                </div>
+                <div class="col-lg-5 invoice-table">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td>Phone</td>
+                        <td><span *ngIf="!isEditClicked" >1234567890</span>
+                          <input *ngIf="isEditClicked" type="text" value="1234567890"/></td>
+                      </tr> 
+                      <tr>
+                        <td>Pincode</td>
+                        <td><span *ngIf="!isEditClicked" >635241</span>
+                          <input *ngIf="isEditClicked" type="text" value="635241"/></td>
+                      </tr>
+                      <tr>
+                        <td>Block</td>
+                        <td><span *ngIf="!isEditClicked" >Block D</span>
+                          <input *ngIf="isEditClicked" type="text" value="Block D"/></td>
+                      </tr>
+                      <tr>
+                        <td>DRP</td>
+                        <td><span *ngIf="!isEditClicked" >12345</span>
+                          <input *ngIf="isEditClicked" type="text" value="12345"/></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>                
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                   <p> Notes</p>
+                   <div class="col-md-12">
+                  <textarea id="txtnotes" cols="100" rows="3"></textarea>
+                </div>
+                </div>                
+              </div>
+            </div>
+        </div>
+          
+          
+        </div>
+      </div>
+
+      </div>
+
+
+        <div class="col-lg-12 mt-5">
+          <ngb-accordion #acc="ngbAccordion" [closeOthers]="true">
+            <ngb-panel id="static-1">
+              <ng-template ngbPanelTitle class="text-black">
+                <h4 class="text-green">Application <span class="font-size-14 mr-10 ml-30 text-success">Current Status : Pending</span><span class="font-size-12 text-black mr-30">since 12 days</span></h4>
+              </ng-template>
+              <ng-template ngbPanelContent>
+          <div class="card">
+            <div class="card-body pl-0">          
+              <div class="row ">
+                <div class="col-lg-12">
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">User ID</h6>
+                      <h6 class="">L1452</h6>
+                    </div>
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Application Dt.</h6>
+                      <h6 class="">20-05-2023</h6>
+                    </div>
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Registration Dt.</h6>
+                      <h6 class="">21-05-2023</h6>
+                    </div>
+                  </div>
+
+                  <div class="row mt-3">
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Submission Dt.</h6>
+                      <h6 class="">21-05-2023</h6>
+                    </div>
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Submitted to Bank 1 Dt.</h6>
+                      <h6 class="">22-05-2023</h6>
+                    </div>  
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Submitted to Bank 2 Dt.</h6>
+                      <h6 class="">24-05-2023</h6>
+                    </div>  
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Colegent</h6>
+                      <h6 class="">Test</h6>
+                    </div>
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Status</h6>
+                      <h6 class="">Pending</h6>
+                    </div>  
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">DRP Name</h6>
+                      <h6 class="">Janu</h6>
+                    </div>
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Mobile</h6>
+                      <h6 class="">3265742666</h6>
+                    </div>  
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Email</h6>
+                      <h6 class="">janu@gmail.com</h6>
+                    </div>  
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">DLC Name</h6>
+                      <h6 class="">Ram</h6>
+                    </div>
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Mobile</h6>
+                      <h6 class="">4758961461</h6>
+                    </div>  
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Email</h6>
+                      <h6 class="">ram@gmail.com</h6>
+                    </div>  
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Applicant Name</h6>
+                      <h6 class="">Ajith</h6>
+                    </div>
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Mobile</h6>
+                      <h6 class="">352899254</h6>
+                    </div>  
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Email</h6>
+                      <h6 class="">ajith@gmail.com</h6>
+                    </div>  
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Social Category</h6>
+                      <h6 class="">Category 1</h6>
+                    </div>
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">State</h6>
+                      <h6 class="">TN</h6>
+                    </div>  
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">District</h6>
+                      <h6 class="">Salem</h6>
+                    </div>  
+                  </div>
+                  <div class="row mt-3 bdr-btm">
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Gender</h6>
+                      <h6 class="">Male</h6>
+                    </div>
+                  </div>
+                  <h4 class="text-danger">Bank details:</h4>
+                  <h5>1st Preference</h5>
+                  <div class="row mt-3">
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Bank</h6>
+                      <h6 class="">IOB</h6>
+                    </div>
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Branch</h6>
+                      <h6 class="">Salem</h6>
+                    </div>  
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">IFSC</h6>
+                      <h6 class="">IOB002344</h6>
+                    </div>  
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Mobile</h6>
+                      <h6 class="">1425367747</h6>
+                    </div>
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Email</h6>
+                      <h6 class="">bank@gmail.com</h6>
+                    </div>  
+                  </div>
+                  <div class="row mt-3 bdr-btm">
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Status</h6>
+                      <h6 class="">Declined</h6>
+                    </div>
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Date</h6>
+                      <h6 class="">25-06-2023</h6>
+                    </div>  
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Remarks</h6>
+                      <h6 class="">Remarks 1</h6>
+                    </div>  
+                  </div>
+                  <h5>2nd Preference</h5>
+                  <div class="row mt-3">
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Bank</h6>
+                      <h6 class="">HDFC</h6>
+                    </div>
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Branch</h6>
+                      <h6 class="">ATTUR</h6>
+                    </div>  
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">IFSC</h6>
+                      <h6 class="">HDFC006350</h6>
+                    </div>  
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Mobile</h6>
+                      <h6 class="">8142527278</h6>
+                    </div>
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Email</h6>
+                      <h6 class="">HDFCbank@gmail.com</h6>
+                    </div>  
+                  </div>
+                  <div class="row mt-3 bdr-btm">
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Status</h6>
+                      <h6 class="">Processed</h6>
+                    </div>
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Date</h6>
+                      <h6 class="">28-06-2023</h6>
+                    </div>  
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Remarks</h6>
+                      <h6 class="">Remarks 2</h6>
+                    </div>  
+                  </div>
+                  <h4 class="text-danger">Find Loan Status</h4>
+                  <div class="row mt-3">
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Loan Acc.</h6>
+                      <h6 class="">1236985855</h6>
+                    </div>
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Transfer Acc</h6>
+                      <h6 class="">7485931555</h6>
+                    </div>  
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">IFSC Code</h6>
+                      <h6 class="">HDFC005263</h6>
+                    </div>  
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Total Requested</h6>
+                      <h6 class="">Rs.2,00,000</h6>
+                    </div>
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Total Proposed</h6>
+                      <h6 class="">Rs.2,00,000</h6>
+                    </div>  
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Total Sanctioned</h6>
+                      <h6 class="">Rs.2,00,000</h6>
+                    </div>  
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Disbursement Dt.</h6>
+                      <h6 class="">24-05-2023</h6>
+                    </div>
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">1st Tranche Disbursed Dt.</h6>
+                      <h6 class="">24-06-2023</h6>
+                    </div>  
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Disbursed Amt.</h6>
+                      <h6 class="">Rs.50,000</h6>
+                    </div>  
+                  </div>
+                  <div class="row mt-3 bdr-btm">
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Balance Loan Amt.</h6>
+                      <h6 class="">Rs. 1,50,000</h6>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-lg-8">
+                      <h4 class="text-danger">Payment:</h4>
+                    </div>
+                    <div class="col-lg-4">
+                    <button class="btn btn-success text-end"> Add / Edit </button>
+                  </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Amount</h6>
+                      <h6 class="">Rs.50,000</h6>
+                    </div>
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Date</h6>
+                      <h6 class="">28-06-2023</h6>
+                    </div>  
+                    <div class="col-lg-4">
+                      <h6 class="mb-1 text-muted">Remarks</h6>
+                      <input type="text">
+                    </div>  
+                  </div>
+                </div>
+            </div> 
+            </div>
+          </div>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+        </div>
+    </div>
+    <div class="col-4">
+      <div class="timeline">
+        <h3>Timeline</h3>
+        <div class="box">
+          <div class="container">
+            <div class="lines">
+              <div class="dot"></div>
+              <div class="line"></div>
+              <div class="dot"></div>
+              <div class="line"></div>
+              <div class="dot"></div>
+              <div class="line"></div>
+              <div class="dot"></div>
+              <div class="line"></div>
+              <div class="dot"></div>
+            </div>
+            <div class="cards">
+              <div class="card">
+                <h4> 20-05-2023 16:30</h4>
+                <p>Lead Created</p>
+              </div>
+              <div class="card mid">
+                <h4> 21-05-2023 15:22</h4>
+                <p>DRP Notes Added</p>
+              </div>
+              <div class="card mid">
+                <h4> 21-05-2023 15:22</h4>
+                <p>Application status : Pending</p>
+              </div>
+              <div class="card mid">
+                <h4> 21-05-2023 15:22</h4>
+                <p>Application status : Confirmed</p>
+              </div>
+              <div class="card">
+                <h4> 22-05-2023 14:15</h4>
+                <p>Payment Completed</p>
+              </div>
+            </div>
+          </div>         
+        </div>
+      </div>
+
+          <!-- <div class="col-lg-12">
+            <div class="card" style="background: #d7eef0;border:1px solid #abd8dc">
+              <div class="card-body pl-0 pb-0">
+                <div class="row ">
+                  <div class="col-lg-12">
+                    <h5 class="text-green " style=""><i class="far fa-money-bill-alt"></i> Collection Summary</h5>
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                          <td style="background:#d7eef0 !important ;" class="p-2 border-0">Total Patient Price</td>
+                          <td style="background:#d7eef0 ;" class="text-end p-2 border-0">319.50</td>
+                        </tr>
+                        <tr>
+                          <td style="background:transparent ;" class="p-2 border-0">PG Collection</td>
+                          <td style="background:transparent ;" class="text-end p-2 border-0">319.50</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div> 
+                </div>
+              </div>
+            </div>
+          </div> -->
+      
+    </div>
+
+  </div>
+</div>
+

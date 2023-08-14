@@ -1,0 +1,142 @@
+<div class="container-fluid">
+
+  <app-page-title title="Profile" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+
+  <div class="row">
+    <div class="col-xl-3" *ngIf="!isEditClicked"></div>
+    <div class="col-xl-1" *ngIf="isEditClicked"></div>
+    <div class="col-xl-6">
+      <div class="card overflow-hidden">
+        <div class="bg-soft bg-primary">
+          <div class="row">
+            <div class="col-7">
+              <div class="text-primary p-3">
+                <h5 class="text-primary">Welcome Back !</h5>
+                <p></p>
+              </div>
+            </div>
+            <div class="col-5 align-self-end">
+              <img src="assets/images/profile-img.png" alt="" class="img-fluid">
+            </div>
+          </div>
+        </div>
+        <div class="card-body pt-0">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="avatar-md profile-user-wid mb-4">
+                <img src="assets/images/users/no-pic.png" alt="" class="img-thumbnail rounded-circle">
+              </div>
+              <h5 class="font-size-20 text-truncate user-name-font">{{selectedUsers.name}}</h5>
+              <p class="text-muted mb-0 text-truncate"></p>
+            </div>
+
+            <div class="col-sm-8">
+              <div class="pt-4">
+                <div class="mt-4" style="text-align: right;">
+                  <a href="javascript: void(0);" class="btn btn-primary btn-sm" (click)="editPassword()">Change Password <i
+                      class="mdi mdi-arrow-right ms-1"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <div class="row">
+                <div class="col-sm-4">
+                </div>
+              </div>
+              <table class="table table-nowrap mb-0">
+                <tbody>
+                  <tr>
+                    <th scope="row">Phone No :</th>
+                    <td>{{selectedUsers.mobileNo}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Email :</th>
+                    <td>{{selectedUsers.emailId}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">User Role :</th>
+                    <td>{{selectedUsers.role}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">User Code :</th>
+                    <td>{{selectedUsers.userCode}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Block :</th>
+                    <td>{{selectedUsers.blockName}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">District :</th>
+                    <td>{{selectedUsers.districtName}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Account Number :</th>
+                    <td>{{selectedUsers.accountNo}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end card -->
+    </div>
+    <div class="col-xl-4" *ngIf="isEditClicked">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title mb-4">Change Password</h4>
+
+          <div class="table-responsive overflow-unset">
+            <form [formGroup]="newPasswordForm" id="newPasswordForm" (ngSubmit)="savePassword()">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="mb-4">
+                  <label>Old Password<span class="text-danger font-size-14">*</span></label>
+                  <input type="password" class="form-control" formControlName="oldPassword" [ngClass]="{ 'is-invalid': submitted && fg.oldPassword.errors }" />
+                  <div *ngIf="submitted && fg.oldPassword.errors" class="invalid-feedback">
+                    <div *ngIf="fg.oldPassword.errors.required">Old Password is required</div>
+                  </div>
+                </div>
+              </div>   
+              <div class="col-md-12">
+                <div class="mb-4">
+                  <label>Password<span class="text-danger font-size-14">*</span></label>
+                  <input type="password" class="form-control" formControlName="newPassword" [ngClass]="{ 'is-invalid': submitted && fg.newPassword.errors }" />
+                  <div *ngIf="submitted && fg.newPassword.errors" class="invalid-feedback">
+                    <div *ngIf="fg.newPassword.errors.required">Password is required</div>
+                  </div>
+                </div>
+              </div>          
+              <div class="col-md-12">
+                <div class="mb-4">
+                  <label>Confirm Password<span class="text-danger font-size-14">*</span></label>
+                  <input type="password" class="form-control" formControlName="cpassword" [ngClass]="{ 'is-invalid': submitted && fg.cpassword.errors }" />
+                  <div *ngIf="submitted && fg.cpassword.errors" class="invalid-feedback">
+                    <div *ngIf="fg.cpassword.errors.required">Confirm Password is required</div>
+                  </div>
+                  <div *ngIf="(fg.cpassword.dirty || fg.cpassword.touched)" class="invalid-feedback" style="display: block !important;">
+                    <div *ngIf="fg.cpassword.errors?.['confirmedValidator']">
+                      Passwords did not match
+                    </div>
+                  </div>
+                </div>
+              </div> 
+              <div class="row d-flex">
+                <div class="col-sm-12">
+                  <div class="justify-content-center text-center">
+                    <button type="submit" class="btn btn-primary w-md me-2">Update</button>
+                    <button type="button" class="btn btn-info w-md" aria-label="Close" (click)="closePassword()">Cancel</button>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3">
+    </div>
+  </div>
+  <!-- end row -->
+</div>
