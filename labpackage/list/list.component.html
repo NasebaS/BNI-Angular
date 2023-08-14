@@ -1,0 +1,116 @@
+<div class="container-fluid">
+  <div class="row ">
+    
+    <div class="col-lg-6 pt-2">
+      <app-page-title title="Lab Packages" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+    </div>
+    <div class="col-lg-6 text-end">
+      <a routerLink="/labpackage/add" class="btn btn-primary">New Package</a>
+    </div>
+  
+  </div>
+  
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+         
+          
+         
+          
+        
+
+          <div class="row mb-md-2">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length" id="tickets-table_length"><label
+                  class="d-inline-flex align-items-center">Show
+                  <select name="tickets-table_length" aria-controls="tickets-table" name="pageSize"
+                    [(ngModel)]="service.pageSize" class="form-control form-control-sm mx-2">
+                    <option [ngValue]="10">10</option>
+                    <option [ngValue]="25">25</option>
+                    <option [ngValue]="50">50</option>
+                    <option [ngValue]="100">100</option>
+                  </select> entries</label></div>
+            </div>
+            <!-- Search -->
+            <div class="col-sm-12 col-md-6">
+              <div id="tickets-table_filter" class="dataTables_filter text-md-end"><label
+                  class="d-inline-flex align-items-center">Search:
+                  <input type="text" name="searchTerm" class="form-control form-control-sm ms-2"
+                    aria-controls="tickets-table" [(ngModel)]="service.searchTerm"></label></div>
+            </div>
+            <!-- End search -->
+          </div>
+          <!-- Table -->
+          <div class="table-responsive">
+            <table id="basic-datatable"
+              class="table table-bordered dt-responsive nowrap datatables no-footer dtr-inline">
+              <thead>
+                <tr>
+                  <th sortable="name" (sort)="onSort($event)">Package ID</th>
+                  <th sortable="date" (sort)="onSort($event)">Package Name</th>
+                  <th sortable="emp" (sort)="onSort($event)">Arabic Name</th>                  
+                  <th sortable="position" (sort)="onSort($event)">No of Test</th> 
+                  <th sortable="office" (sort)="onSort($event)">Price (SAR)</th>                                                     
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody >
+                <tr *ngFor="let table of tables$ | async;let i=index">
+                  
+                  <td>
+                    <ngb-highlight [result]="table.emp" [term]="service.searchTerm"></ngb-highlight>
+                 </td>
+                  <td>
+                    <ngb-highlight [result]="table.name" [term]="service.searchTerm"></ngb-highlight>
+                  </td>
+                  
+                 <td>
+                  <ngb-highlight [result]="table.position" [term]="service.searchTerm"></ngb-highlight>
+                </td>
+                 <td>
+                  <ngb-highlight [result]="table.date" [term]="service.searchTerm"></ngb-highlight>
+                </td>
+                <td>
+                  <ngb-highlight [result]="table.price" [term]="service.searchTerm"></ngb-highlight>
+                </td> 
+                
+                  
+                  
+                  
+                  
+                  <td>
+                    <a><i class="bx bx-edit"></i></a>
+                  </td>
+                </tr>
+
+                
+              </tbody>
+            </table>
+          </div>
+          <!-- End table -->
+          <div class="row justify-content-md-between align-items-md-center mt-2">
+            <div class="col-sm-12 col-md-5">
+              <div class="dataTables_info mb-2" id="tickets-table_info" role="status" aria-live="polite">Showing
+                {{service.startIndex}} to
+                {{service.endIndex}} of {{service.totalRecords}}
+                entries
+              </div>
+            </div>
+            <!-- Pagination -->
+            <div class="col-sm-12 col-md-5">
+              <div class="text-md-right float-md-end pagination-rounded">
+                <ngb-pagination [collectionSize]="total$ | async" [(page)]="service.page" [pageSize]="service.pageSize">
+                </ngb-pagination>
+              </div>
+            </div>
+            <!-- End Pagination -->
+          </div>
+        </div>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
